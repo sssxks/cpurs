@@ -52,34 +52,34 @@ const FUNCT3_6: u32 = 0x6; // OR, ORI, REM, BLTU
 const FUNCT3_7: u32 = 0x7; // AND, ANDI, REMU, BGEU
 
 // Immediate type selectors (ImmSel output)
-const IMM_TYPE_I: u8 = 0b001;
-const IMM_TYPE_S: u8 = 0b100; // Store
-const IMM_TYPE_B: u8 = 0b010; // Branch
-const IMM_TYPE_U: u8 = 0b101; // Upper immediate (LUI, AUIPC)
-const IMM_TYPE_J: u8 = 0b011; // Jump (JAL)
+pub const IMM_TYPE_I: u8 = 0b001;
+pub const IMM_TYPE_S: u8 = 0b100; // Store
+pub const IMM_TYPE_B: u8 = 0b010; // Branch
+pub const IMM_TYPE_U: u8 = 0b101; // Upper immediate (LUI, AUIPC)
+pub const IMM_TYPE_J: u8 = 0b011; // Jump (JAL)
 
 // JUMP operation types (JUMP_op output)
-const JUMP_OP_JAL: u8 = 0b0_000;
-const JUMP_OP_JALR: u8 = 0b1_000;
-const JUMP_OP_BEQ: u8 = 0b0_001;
-const JUMP_OP_BNE: u8 = 0b0_010;
-const JUMP_OP_BLT: u8 = 0b0_011;
-const JUMP_OP_BGE: u8 = 0b0_100;
-const JUMP_OP_BLTU: u8 = 0b0_101;
-const JUMP_OP_BGEU: u8 = 0b0_110;
+pub const JUMP_OP_JAL: u8 = 0b0_000;
+pub const JUMP_OP_JALR: u8 = 0b1_000;
+pub const JUMP_OP_BEQ: u8 = 0b0_001;
+pub const JUMP_OP_BNE: u8 = 0b0_010;
+pub const JUMP_OP_BLT: u8 = 0b0_011;
+pub const JUMP_OP_BGE: u8 = 0b0_100;
+pub const JUMP_OP_BLTU: u8 = 0b0_101;
+pub const JUMP_OP_BGEU: u8 = 0b0_110;
 
 // ALU operation types (ALU_op output)
-const ALU_OP_ADD: u8 = 0b0001;
-const ALU_OP_SUB: u8 = 0b0010;
-const ALU_OP_AND: u8 = 0b0011;
-const ALU_OP_OR: u8 = 0b0100;
-const ALU_OP_XOR: u8 = 0b0101;
-const ALU_OP_SLL: u8 = 0b0110;
-const ALU_OP_SRL: u8 = 0b0111;
-const ALU_OP_SLT: u8 = 0b1000;
-const ALU_OP_SLTU: u8 = 0b1001;
-const ALU_OP_SRA: u8 = 0b1010;
-const ALU_OP_COPY_B: u8 = 0b1100; // Pass B (immediate for LUI)
+pub const ALU_OP_ADD: u8 = 0b0001;
+pub const ALU_OP_SUB: u8 = 0b0010;
+pub const ALU_OP_AND: u8 = 0b0011;
+pub const ALU_OP_OR: u8 = 0b0100;
+pub const ALU_OP_XOR: u8 = 0b0101;
+pub const ALU_OP_SLL: u8 = 0b0110;
+pub const ALU_OP_SRL: u8 = 0b0111;
+pub const ALU_OP_SLT: u8 = 0b1000;
+pub const ALU_OP_SLTU: u8 = 0b1001;
+pub const ALU_OP_SRA: u8 = 0b1010;
+pub const ALU_OP_COPY_B: u8 = 0b1100; // Pass B (immediate for LUI)
 
 /// Decodes a 32-bit RISC-V instruction and returns control signals.
 ///
