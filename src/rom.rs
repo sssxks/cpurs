@@ -5,16 +5,22 @@ pub struct ROM<const N: usize> {
     instrs: [u32; N],
 }
 
+use std::path::PathBuf;
+
 impl<const N: usize> ROM<N> {
-    pub fn new(file_path: String) -> Result<Self, io::Error> {
+    pub fn new(relative_file_path: String) -> Result<Self, io::Error> {
         let mut instrs = [0u32; N];
-        
+
+        // Construct path relative to CARGO_MANIFEST_DIR
+        let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        path.push(relative_file_path);
+
         // Read instructions from file
         let lines = {
-            let file = File::open(file_path)?;
+            let file = File::open(path)?;
             io::BufReader::new(file).lines()
         };
-        
+
         lines
             .take(N) // Only take up to N lines to avoid exceeding array bounds
             .enumerate()

@@ -23,25 +23,25 @@ for SRC in "${SRC_FILES[@]}"; do
     HEX_REV="build/${BASENAME}_big.mem" # 用于存储转为大端序的十六进制文件
 
     # Assemble the source file
-    if ! riscv32-unknown-elf-as -o "$OBJ" "$SRC"; then
+    if ! riscv64-linux-gnu-as -march=rv32im -mabi=ilp32 -o "$OBJ" "$SRC"; then
         echo "Assembly failed for $SRC"
         exit 1
     fi
 
     # Link the object file
-    if ! riscv32-unknown-elf-ld -T linker.ld -o "$ELF" "$OBJ"; then
+    if ! riscv64-linux-gnu-ld -m elf32lriscv -T linker.ld -o "$ELF" "$OBJ"; then
         echo "Linking failed for $OBJ"
         exit 1
     fi
 
     # Generate disassembly (optional)
-    if ! riscv32-unknown-elf-objdump -S "$ELF" > "$DUMP"; then
+    if ! riscv64-linux-gnu-objdump -S "$ELF" > "$DUMP"; then
         echo "Objdump failed for $ELF"
         exit 1
     fi
 
     # Generate binary file from ELF
-    if ! riscv32-unknown-elf-objcopy -O binary "$ELF" "$BIN"; then
+    if ! riscv64-linux-gnu-objcopy -O binary "$ELF" "$BIN"; then
         echo "Binary extraction failed for $ELF"
         exit 1
     fi
